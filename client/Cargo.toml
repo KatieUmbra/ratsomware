@@ -1,0 +1,23 @@
+[package]
+name = "client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+egui = "0.28"
+egui_extras = { version = "0.28", features = ["default", "image"] }
+eframe = { version = "0.28", default-features = false, features = ["accesskit", "default_fonts", "glow", "persistence"] }
+log = "0.4"
+serde = { version = "1", features = ["derive"] }
+reqwest = "0.12"
+tokio = { version = "1.40", features = ["full"] }
+rand = "0.8"
+rsa = "0.9"
+zeroize = "1.8"
+memmap = "0.7"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+env_logger = "0.11"
+
+[profile.dev.package.num-bigint-dig]
+opt-level = 3
